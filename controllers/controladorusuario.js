@@ -1,6 +1,4 @@
-//consumiendo el api para acceder a los datos de la base de datos
-
-let url="http://localhost:8080/storeapi/v1/producto"
+let url="http://localhost:8080/storeapi/v1/usuario"
 
 let peticion={
     method:"GET",
@@ -15,24 +13,32 @@ fetch(url,peticion)
     console.log(respuesta)
     //recogiendo la respuesta para hacer render
     let fila=document.getElementById("fila")
-    respuesta.forEach(function(producto){
+    respuesta.forEach(function(usuario){
         //console.log(producto) probando
         let columna=document.createElement("div")
         columna.classList.add("col")
         let tarjeta=document.createElement("div")
         tarjeta.classList.add("card","shadow","h-100")
-        let imagen=document.createElement("img")
-        imagen.classList.add("img-fluid")
-        imagen.src=producto.foto
+        let imagen=document.createElement("h4")
+        imagen.classList.add("text-center")
+        imagen.src=usuario.nombres
+        
 
-        let nombreProducto=document.createElement("h4")
-        nombreProducto.classList.add("text-center")
-        nombreProducto.textContent=producto.nombre
+        let nombreUsuario=document.createElement("h4")
+        nombreUsuario.classList.add("text-center")
+        nombreUsuario.textContent=usuario.nombres
+
+        let correo=document.createElement("h4")
+        correo.classList.add("text-center")
+        correo.textContent=usuario.correo
 
         
 
-        tarjeta.appendChild(imagen)
-        tarjeta.appendChild(nombreProducto)
+        
+
+      
+        tarjeta.appendChild(nombreUsuario)
+        tarjeta.appendChild(correo)
         columna.appendChild(tarjeta)
         fila.appendChild(columna)
 
